@@ -1,26 +1,54 @@
 class SmartCalculator {
   constructor(initialValue) {
-    // your implementation
+      this.value = [initialValue];
   }
 
   add(number) {
-    // your implementation
+    this.value.push('+');
+    this.value.push(number);
+       console.log(this.value);
+    return this;
   }
   
   subtract(number) {
-    // your implementation
+      this.value.push('-');
+      this.value.push(number);
+       console.log(this.value);
+      return this;
   }
 
   multiply(number) {
-    // your implementation
+      this.value.push('*');
+      this.value.push(number);
+       console.log(this.value);
+      return this;
   }
 
   devide(number) {
-    // your implementation
+      this.value.push('/');
+      this.value.push(number);
+       console.log(this.value);
+      return this;
   }
 
   pow(number) {
-    // your implementation
+      this.value.push('**');
+      this.value.push(number);
+      return this;
+  }
+
+  valueOf() {
+    return this._calcValue();
+  }
+
+  toString() {
+    return this._calcValue();
+  }
+
+  _calcValue() {
+      let expression = this.value.reduce((previousValue, currentValue) => previousValue + currentValue, '');
+      console.log(expression);
+      return (Function(`return ${expression};`))();
   }
 }
 
